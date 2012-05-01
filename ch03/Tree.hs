@@ -9,10 +9,7 @@ simpleTree = Node "parent" (Node "Left child" Empty Empty)
 -- Count Tree tree size using recursion
 treeSize :: Tree[a] -> Int
 treeSize Empty                = 0
-treeSize (Node a Empty Empty) = 1
-treeSize (Node a Empty r)     = 1 + treeSize r
-treeSize (Node a l Empty)     = 1 + treeSize l
-treeSize (Node a l r)         = max (1 + treeSize l) (1 + treeSize r)
+treeSize (Node a l r)         = 1 + max (treeSize l) (treeSize r)
 
 
 data MaybeTree a = MaybeNode a (Maybe (MaybeTree a)) (Maybe (MaybeTree a))
